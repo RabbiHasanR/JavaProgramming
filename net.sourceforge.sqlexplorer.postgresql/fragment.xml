@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+   		 id="net.sourceforge.sqlexplorer.postgresql.EditorActions"
+   		 point="net.sourceforge.sqlexplorer.editorAction">
+      <action
+            class="net.sourceforge.sqlexplorer.postgresql.actions.NormalExplainAction"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.actions.NormalExplainAction"
+            icon="icons/explain.gif"
+            name="Normal SQL Explain"/>
+      <action
+            class="net.sourceforge.sqlexplorer.postgresql.actions.AnalyzeExplainAction"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.actions.AnalyzeExplainAction"
+            icon="icons/explain_analyze.gif"
+            name="Analyze SQL Explain"/>
+   </extension>
+   <extension
+         id="net.sourceforge.sqlexplorer.postgresql.DetailTabs"
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.DatabaseStatisticsTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.DatabaseStatisticsTab"
+            name="Statistics"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.TableStatisticsTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.TableStatisticsTab"
+            name="Statistics"
+            node-type="table"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.ConnectionTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.ConnectionTab"
+            name="Connections"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.LockTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.LockTab"
+            name="Locks"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.TxTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.TxTab"
+            name="Transactions"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.TableInfoTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.TableInfoTab"
+            name="Info"
+            node-type="cast,aggregate,function,procedure,trigger,conversion,domain,opclass,operator,type"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.PropertyInfoTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.PropertyInfoTab"
+            name="Info"
+            node-type="loginrole,grouprole,tablespace,language"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.RequiresTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.RequiresTab"
+            name="Requires Info"
+            node-type="loginrole,grouprole,tablespace,language,cast,aggregate,function,procedure,trigger,conversion,domain,opclass,operator,type"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.RequiredByTab"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.RequiredByTab"
+            name="Required by Info"
+            node-type="loginrole,grouprole,tablespace,language,cast,aggregate,function,procedure,trigger,conversion,domain,opclass,operator,type"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.postgresql.tabs.SourceTab"
+            database-product-name="PostgreSQL*"
+            id="net.sourceforge.sqlexplorer.postgresql.tabs.SourceTab"
+            name="Generic Source Tab"
+            node-type="function,procedure,trigger"/>    
+   </extension>
+   <extension
+         id="net.sourceforge.sqlexplorer.postgresql.Nodes"
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.FunctionFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.FunctionFolder"
+            name="Function Folder"
+            icon="icons/procedure.gif"
+            parent-node="schema+catalog"
+            table-type="function_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.ProcedureFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.ProcedureFolder"
+            name="Procedure Folder"
+            icon="icons/procedure.gif"
+            parent-node="schema+catalog"
+            table-type="procedure_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.TriggerFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.TriggerFolder"
+            name="Trigger Folder"
+            icon="icons/trigger.gif"
+            parent-node="schema+catalog"
+            table-type="trigger_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.AggregateFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.AggregateFolder"
+            name="Aggregate Folder"
+            parent-node="schema+catalog"
+            table-type="aggregate_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.ConversionFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.ConversionFolder"
+            name="Conversion Folder"
+            parent-node="schema+catalog"
+            table-type="conversion_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.OperatorFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.OperatorFolder"
+            name="Operator Folder"
+            parent-node="schema+catalog"
+            table-type="operator_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.OperatorClassFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.OperatorClassFolder"
+            name="Operator Class Folder"
+            parent-node="schema+catalog"
+            table-type="opclass_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.TypeFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.TypeFolder"
+            name="Type Folder"
+            parent-node="schema+catalog"
+            table-type="type_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.DomainFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.DomainFolder"
+            name="Domain Folder"
+            icon="icons/domain.gif"
+            parent-node="schema+catalog"
+            table-type="domain_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.CastFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.CastFolder"
+            name="Cast Folder"
+            parent-node="root"
+            table-type="cast_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.LanguageFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.LanguageFolder"
+            name="Language Folder"
+            parent-node="root"
+            table-type="language_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.TablespaceFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.TablespaceFolder"
+            name="Tablespace Folder"
+            parent-node="root"
+            table-type="tablespace_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.LoginRoleFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.LoginRoleFolder"
+            name="Role Folder"
+            parent-node="root"
+            table-type="loginrole_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.postgresql.nodes.GroupRoleFolder"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.nodes.GroupRoleFolder"
+            name="Group Folder"
+            parent-node="root"
+            table-type="grouprole_folder"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.postgresql.actions.ConfigContextAction"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.actions.ConfigContextAction"
+            icon="icons/configs.gif"
+            name="Show database configuration"
+            node-type="database"/>
+      <action
+            class="net.sourceforge.sqlexplorer.postgresql.actions.SqlFeaturesContextAction"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.actions.SqlFeaturesContextAction"
+            icon="icons/features.gif"
+            name="Show SQL features"
+            node-type="database"/>
+      <action
+            class="net.sourceforge.sqlexplorer.postgresql.actions.DiscoverDbContextAction"
+            database-product-name="PostgreSQL"
+            id="net.sourceforge.sqlexplorer.postgresql.actions.DiscoverDbContextAction"
+            icon="icons/database.jpg"
+            name="Discover databases"
+            node-type="database"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.databaseProduct">
+      <databaseProduct
+            class="net.sourceforge.sqlexplorer.postgresql.dbproduct.PostgresDatabaseProduct"
+            database-product-name="PostgreSQL*">
+      </databaseProduct>
+   </extension>
+
+</fragment>

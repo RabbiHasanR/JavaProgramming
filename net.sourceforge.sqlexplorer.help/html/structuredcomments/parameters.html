@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+
+  
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+
+  
+
+
+  
+  <title>Structured Comments</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+
+
+  
+  <style>
+.macro {
+font: bold 12pt Courier;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<h1>Named Parameters</h1>
+
+
+<p>Calling a stored procedure in SQLExplorer is no different to executing a piece of standard SQL, provided that all parameters are input parameters - and such criteria excludes stored functions because they output a return value. This is particularly a problem on RDBMS's where the result sets are not returned via the standard getResultSet() mechanism but instead returned as an output parameter (IE Oracle).</p>
+<p>In order to use parameters you must first declare them (where you must give each parameter a unique name) using the structured comment &quot;parameter&quot; command, and then you can refer to the parameter anywhere further on in the query by a colon (&quot;:&quot;) and the name. </p>
+<p class="macro">${parameter name [(&quot;output&quot;|&quot;inout&quot;)] [datatype] [arguments]} [value]</p>
+<p>The name is mandatory and must uniquely identify the parameter - if you subsequently define a new parameter with the same name as an existing one, the existing one is overwritten from that point onwards. After the name, you can optionally specify whether a parameter is input, output, or both (&quot;inout&quot;), and if you do not specify a direction then the default is &quot;input&quot;. The datatype is generally only useful if a cursor or date/time parameter is being specified, and an optional has a series of arguments depending on what data type is selected; if no data type is given then the default is String. Finally, after the command (ie after the closing &quot;}&quot;) is the value for input parameters; this is interpretted according to the data type selected - for example, the arguments to a date/time field specify the format that the value is in. </p>
+<p>The datatypes available are: <span class="code">cursor</span>, <span class="code">string</span>, <span class="code">integer</span>, <span class="code">decimal</span>, <span class="code">date</span>, <span class="code">time</span>, and <span class="code">datetime</span>. The <span class="code">date</span>, <span class="code">time</span>, and <span class="code">datetime</span> datatypes support arguments which indicate how to interpret the value (if provided) and can be either &quot;short&quot;, &quot;medium&quot;, &quot;long&quot;, or a format pattern.</p>
+<p>When declaring a cursor, the direction is always assumed to be &quot;output&quot; and the value is ignored. </p>
+<p>For example, to declare a cursor and execute a stored procedure which returns a result set in that cursor: </p>
+<p class="code">--${ parameter c output cursor }<br>
+  --${ parameter my_date input date 'dd/MM/yyyy' } 21/11/2007<br>
+  --${ parameter my_out output string }<br>
+  begin<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pkg_test.my_test_proc(:c, :my_date, :my_out);<br>
+end;</p>
+<p>This example also declares a date, specifies the format of that date, and sets its input value to 21st November 2007; executing the above code will produce results tabs for the cursor result set and a result tab listing all the output parameters with their new values. </p>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+</body>
+</html>

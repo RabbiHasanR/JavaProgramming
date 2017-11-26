@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.project.mess2.Member&apos; to &apos;AccountCalculation&apos;&#x0D;&#x0A;- Original project: &apos;MessManagmentSystem2&apos;&#x0D;&#x0A;- Original element: &apos;com.project.mess2.Member&apos;&#x0D;&#x0A;- Renamed element: &apos;com.project.mess2.AccountCalculation&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Member&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.project.mess2{Member.java[Member" matchStrategy="1" name="AccountCalculation" qualified="false" references="true" similarDeclarations="false" stamp="1472386342384" textual="false" version="1.0"/>
+</session>

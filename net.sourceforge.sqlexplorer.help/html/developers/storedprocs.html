@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Stored Procedures</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+<h1>Database-Specific Features (including Stored Procedures)</h1>
+<p>There are a number of occasions where the database server will return additional information about the query just executed, whether it's error messages or database-specific data types in the result set; from SQLExplorer 3.5 the DatabaseProduct interface allows you to add support for these proprietary features into your implementation. Specifically, implementing a DatabaseProduct derived class allows you to:</p>
+<ul>
+  <li>Interpret error messages to extract line and column information; when a user clicks on an error message in the Messages tab, the editor takes the user directly to the problem line</li>
+  <li>Add support for additional, non-standard datatypes including CLOBs, BLOBs, XML, images, etc</li>
+  <li>Provide an advanced query parser to separate the SQL text into individual queries based on grammar as opposed to character separators </li>
+</ul>
+<p>This stage <em>is optional</em> - if you do not provide an implementation then a sensible default will be used but if your database supports stored procedures you should seriously consider implementing error message retrieval/parsing. </p>
+<p>The rest of this page serves as a walkthrough for implementing your own DatabaseProduct, and is based on the implementation for the Oracle database. The default implementation (used when there is no DatabaseProduct for the database) is <span class="code">net.sourceforge.dbproduct.DefaultDatabaseProduct</span>.</p>
+<h2>Creating the DatabaseProduct class</h2>
+<p>SQLExplorer uses reflection to locate a DatabaseProduct for your database, based on the database driver   alias (I.E. the part of the database URL which identifies which java.sql.Driver to load - for Oracle this is &quot;oracle&quot;, for MySQL it is &quot;mysql&quot;, etc). This is used to load a class called &quot;<span class="code">net.sourceforge.sqlexplorer.<em>aliasname</em>.dbproduct.DatabaseProduct</span>&quot; must provide a public static method called getProductInstance() which returns a singleton instance of <span class="code">net.sourceforge.sqlexplorer.dbproduct.DatabaseProduct</span>.</p>
+<p>For example: </p>
+<blockquote>
+  <p> 	<span class="code">private static DatabaseProduct s_instance = null;<br>
+    <br>
+    public static DatabaseProduct getProductInstance() {<br>
+    &nbsp;&nbsp;if (s_instance == null)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;s_instance = new DatabaseProduct();<br>
+    &nbsp;&nbsp;return s_instance;<br>
+    }</span><br>
+  </p>
+</blockquote>
+<p>The first and simplest methods to be implemented are getDriver() and createDataset(); getDriver() simply loads your <span class="code">java.sql.Driver</span> class and returns an instance of it. Because of the way Eclipse loads classes, it is very important that your driver is loaded using the ClassLoader of DatabaseProduct and <em>not</em> the default or you will get ClassNotFound exceptions if you use any proprietary classes provided by your database manufacturer. The following implementation should be used by all DatabaseProduct implementations: </p>
+<blockquote>
+  <p> <span class="code">public Driver getDriver(ISQLDriver driver) throws ClassNotFoundException {<br>
+    &nbsp;&nbsp;try {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;ClassLoader loader = new SQLDriverClassLoader(getClass().getClassLoader(), driver);<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Class driverCls = loader.loadClass(driver.getDriverClassName());<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return (Driver)driverCls.newInstance();<br>
+    &nbsp;&nbsp;} catch(MalformedURLException e) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;throw new ClassNotFoundException(e.getMessage(), e);<br>
+    &nbsp;&nbsp;} catch(InstantiationException e) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;throw new ClassNotFoundException(e.getMessage(), e);<br>
+    &nbsp;&nbsp;} catch(IllegalAccessException e) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;throw new ClassNotFoundException(e.getMessage(), e);<br>
+    &nbsp;&nbsp;}<br>
+    }</span></p>
+</blockquote>
+<p>the createDataSet() method is used to instantiate a DataSet object for a given ResultSet; you only need to implement a DataSet-derived class if you want to add support for custom data types, otherwise simply instantiate the DataSet class and return it. The default implementation simply uses DataSet: </p>
+<blockquote>
+  <p><span class="code">&nbsp;&nbsp;public DataSet createDataSet(ISQLAlias alias, ResultSet resultSet) throws SQLException {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return new DataSet(null, resultSet, null);<br>
+     &nbsp; }</span></p>
+</blockquote>
+<h2>Processing Error and Status Messages </h2>
+<p>Error and status messages are returned from the database server in a number of ways, and there is a method in DatabaseProduct for each:</p>
+<ul>
+  <li>After every query, status messages are available - <span class="code">getServerMessages()</span></li>
+  <li>When an error occurs and <span class="code">SQLException</span> is raised - <span class="code">getErrorMessages()</span></li>
+  <li>After every query when compilation error(s) occur and a <span class="code">SQLException</span> is not raised - <span class="code">getErrorMessages()</span></li>
+</ul>
+<p>All three methods return a <span class="code">java.util.Collection</span> of <span class="code">SQLEditor.Message</span> objects, each of which is used as a single line in the Messages tab. </p>
+<p><span class="code">getServerMessages() </span>is expected to return status messages from the server; in Oracle, that means the result of the general-purpose DBMS_OUPUT logging package, but if your database does not have a similar feature you can just return null.</p>
+<p><span class="code">getErrorMessages(SQLConnection connection, SQLException e, int lineNoOffset)</span> is used when a <span class="code">SQLException</span> has been raised and should examine the <span class="code">SQLException</span> to locate and extract any line numbers. Where the exception contains multiple error messages you should split it into separate <span class="code">SQLEditor.Messages</span>, one for each error. At the very least, you must return one <span class="code">SQLEditor.Message</span> or the Messages tab will remain empty. Finally, because the error messages returned by the server will be relative to the start of the query it received <em>but </em>the query may be several lines down in the original SQL text (I.E. the user has a script with several queries and the database thinks each query starts on line 1) you must adjust the line numbers by adding lineNoOffset. For example:</p>
+<blockquote>
+  <p> <span class="code">public Collection&lt;Message&gt; getErrorMessages(SQLConnection connection, SQLException e, int lineNoOffset) throws SQLException {<br>
+    &nbsp;&nbsp;LinkedList&lt;SQLEditor.Message&gt; messages = new LinkedList&lt;SQLEditor.Message&gt;();<br>
+    <br>
+    &nbsp;&nbsp;//<br>
+    &nbsp;&nbsp;// Parse the SQLException here<br>
+    &nbsp;&nbsp;//<br>
+	&nbsp;&nbsp;<br>
+	&nbsp;&nbsp;// Create the message and return<br>
+	&nbsp;&nbsp;messages.add(new SQLEditor.Message(false, lineNo + lineNoOffset, charNo, text));<br>
+	&nbsp;&nbsp;return;<br>
+    }</span><br>
+  </p>
+</blockquote>
+<p><span class="code">getErrorMessages(SQLConnection, Query)</span> is used when a query has been successfully executed but if it's a stored procedure it may have compilation errors; this method should return them. </p>
+<h2>Advanced Query Parsers </h2>
+<p>In order to execute a SQL script (whether ANSI-SQL or a stored procedure) against a database SQLExplorer has to be able to distinguish where one SQL statement ends and another begins. While this is fairly straightforward for standard SQL statements because a simple character delimiter (usually a semi-colon) is used to separate the statements in a natural manner, stored procedures are more complicated because they typically include semi-colons and there is no explicit end without using additional separator characters. The basic parser included in SQLExplorer does just this - it looks for special separator characters.</p>
+<p>The method <span class="code">getQueryParser()</span> is called to return an instance of QueryParser for a given SQL string; the QueryParser <em>must</em> be able to separate the SQL text into multiple queries. The simplest implementation of this is <span class="code">BasicQueryParser</span> - this is the parser used before v3.5, and works by using separator characters. </p>
+<p>However, SQLExplorer includes support for more complicated parsers which read the SQL and interpret the grammar to determine where a query ends, which makes for a much more natural programming experience. This is not as complicated as it first sounds; firstly, the base class AbstractQueryParser and it's counterpart Tokenizer provide extensive support for easily reading and processing the query, and secondly it is <em>not</em> necessary to write a full grammar of the underlying database.</p>
+<p>AbstractQueryParser uses an instance of Tokenizer to split the text into individual Tokens; each token is either a word, a number, a comment, or a string. You access the tokens by repeatedly calling nextToken() until it returns null, but you can also &quot;unget&quot; the tokens, look ahead at the upcoming tokens, and look back the at tokens you've previously seen (or, up to last 5 anyway) - this look ahead/look behind approach makes it really easy to process a grammar, especially when you're only implementing a small part of the real grammar used by the database. The principal methods provided by <span class="code">AbstractQueryParser</span> are: </p>
+<ul>
+  <li><span class="code">nextToken() </span>- gets the next <span class="code">Token</span> from a <span class="code">Tokenizer</span> instance; this will be a word, number, punctuation, etc </li>
+  <li><span class="code">ungetToken()</span> - undoes the effect of <span class="code">nextToken() </span></li>
+  <li><span class="code">lastToken()</span> - returns the previous token; equivelant to <span class="code">lastToken(1)</span> </li>
+  <li><span class="code">lastToken(int distance)</span>  - returns the token <span class="code">distance</span> times ago</li>
+  <li><span class="code">lookAhead(int distance)</span> - returns the token <span class="code">distance</span> times in the future </li>
+  <li><span class="code">getCurrentToken()</span> - returns the current token </li>
+  <li><span class="code">addQuery(Token startToken, Token endToken)</span> - adds a Query, starting with <span class="code">startToken</span> and ending at the end of <span class="code">endToken</span> </li>
+</ul>
+<p>Firstly, derive a class from AbstractQueryParser and implement the <span class="code">parseQueries()</span>  method; <span class="code">parseQueries()</span> should use the methods listed above to locate the edges of each query and perform the separation, calling addQuery() to store the individual Query. </p>
+<p>Parsing a full grammar for your database platform would be a complex and difficult process, not to mention the fact that new releases of the database could make your parser incompatible - but you should note that it is <em>not</em> necessary to parse an entire grammar. Generally speaking, all you have to do is a) detect the start of a stored procedure, and b) count begin/end pairs in the code until you have matched every &quot;end&quot; to a &quot;begin&quot;. The only gotcha here is that the &quot;end&quot; command may be used for more than just pairing with &quot;begin&quot;; for example, Oracle has &quot;BEGIN...END&quot; and &quot;IF...THEN...END IF&quot;, so you have to count the &quot;IF&quot; etc as an implicit begin. Don't stop parsing immediately after the begin/end count reaches zero either - you should do it at the first semi-colon after the end, or the at the end of the Tokens. </p>
+<p>Have a look at the <span class="code">net.sourceforge.sqlexplorer.oracle.dbproduct.OracleQueryParser</span> for a working example - you should find it fairly self-explanitory but if you need any help please post in the Developer forum and I'll provide any help I can.</p>
+<h3>Testing the Query Parser</h3>
+<p>There is a test case project under the SQL Explorer CVS tree with a module called &quot;net.sourceforge.sqlexplorer.test&quot;; this there are two test case applications, one for the Tokenizer (TokenizerTest) and another for the QueryParsers (QueryTest). QueryTest is hard coded to test the OracleQueryParser at the moment - just edit it to put your own one in.</p>
+<p>The test apps look for files called &quot;tok_test*.xml&quot; or &quot;qry_test*.xml&quot; which contain test data and expected results; see the comments in the .java files for details.</p>
+<p>&nbsp; </p>
+</body>
+</html>

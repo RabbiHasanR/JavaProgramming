@@ -1,0 +1,24 @@
+package com.project.mess2;
+import java.sql.*;
+import javax.swing.*;
+
+public class DbConector {
+	Connection conn=null;
+	
+	public static Connection dbConector(){
+		try{
+			Class.forName("org.sqlite.JDBC");
+		     Connection conn=DriverManager.getConnection("jdbc:sqlite:F:\\mess_management.sqlite");
+			JOptionPane.showMessageDialog(null,"Connection is succsesfull");
+			return conn;
+			
+		}
+		catch(Exception e){
+			JOptionPane.showMessageDialog(null,e);
+			return null;
+		}
+	}
+	
+	
+
+}

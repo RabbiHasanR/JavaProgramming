@@ -1,0 +1,151 @@
+package com.project.mess2;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.sql.*;
+import javax.swing.*;
+public class MemberInformation extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MemberInformation frame = new MemberInformation();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	Connection connection=null;
+
+	/**
+	 * Create the frame.
+	 */
+	public MemberInformation() {
+		connection=DbConector.dbConector();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 734, 471);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTextArea txtrMessManagementSystem = new JTextArea();
+		txtrMessManagementSystem.setText("Mess Management System");
+		txtrMessManagementSystem.setBounds(204, 0, 308, 22);
+		contentPane.add(txtrMessManagementSystem);
+		
+		JLabel lblNewLabel = new JLabel("Name :");
+		lblNewLabel.setBounds(39, 80, 46, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblEamil = new JLabel("Eamil :");
+		lblEamil.setBounds(39, 122, 46, 14);
+		contentPane.add(lblEamil);
+		
+		JLabel lblAddress = new JLabel("Address :");
+		lblAddress.setBounds(39, 162, 46, 14);
+		contentPane.add(lblAddress);
+		
+		JLabel lblPhone = new JLabel("Phone :");
+		lblPhone.setBounds(39, 204, 46, 14);
+		contentPane.add(lblPhone);
+		
+		JLabel lblOccuption = new JLabel("Occuption :");
+		lblOccuption.setBounds(39, 255, 68, 14);
+		contentPane.add(lblOccuption);
+		
+		JLabel lblSex = new JLabel("Sex :");
+		lblSex.setBounds(39, 299, 46, 14);
+		contentPane.add(lblSex);
+		
+		textField = new JTextField();
+		textField.setBounds(79, 77, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(79, 119, 86, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(95, 159, 86, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(95, 201, 86, 20);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(105, 252, 86, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(105, 296, 86, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JButton btnAddInformation = new JButton("Add Information");
+		btnAddInformation.setBounds(10, 353, 111, 23);
+		contentPane.add(btnAddInformation);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.setBounds(156, 353, 89, 23);
+		contentPane.add(btnClear);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(263, 100, 402, 240);
+		contentPane.add(textArea);
+		
+		JButton btnShow = new JButton("Show All Member Data");
+		btnShow.setBounds(360, 66, 202, 23);
+		contentPane.add(btnShow);
+		
+		JButton btnSearch = new JButton("Search");
+		btnSearch.setBounds(542, 353, 89, 23);
+		contentPane.add(btnSearch);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(438, 354, 86, 20);
+		contentPane.add(textField_6);
+		textField_6.setColumns(10);
+		
+		JLabel lblName = new JLabel("Name :");
+		lblName.setBounds(382, 357, 46, 14);
+		contentPane.add(lblName);
+		
+		JButton btnNewButton = new JButton("Update");
+		btnNewButton.setBounds(18, 384, 89, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(542, 387, 89, 23);
+		contentPane.add(btnDelete);
+	}
+}

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DBase extension for SQLExplorer
+Bundle-SymbolicName: net.sourceforge.sqlexplorer.dbase;singleton:=true
+Bundle-Version: 3.6.1.v20120708_SR6
+Bundle-ClassPath: net.sourceforge.sqlexplorer.dbase_3.6.1.v20120708_SR6.jar
+Bundle-Vendor: Austin Morgan
+Fragment-Host: net.sourceforge.sqlexplorer;bundle-version="3.0.0"
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

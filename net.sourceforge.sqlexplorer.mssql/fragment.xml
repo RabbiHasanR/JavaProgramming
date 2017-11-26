@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.mssql.nodes.ProcedureFolder"
+            database-product-name="Microsoft SQL Server*"
+            icon="icons/stored_procedure.gif"
+            id="net.sourceforge.sqlexplorer.mssql.procedures"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="procedure_folder">
+         Adds a tree that represents each procedure, it&apos;s parameters, and it&apos;s dependancies
+      </node>
+      <node
+            class="net.sourceforge.sqlexplorer.mssql.nodes.JobsFolder"
+            database-product-name="Microsoft SQL Server*"
+            icon="icons/job.gif"
+            id="net.sourceforge.sqlexplorer.mssql.jobs"
+            name="Jobs"
+            parent-node="root"
+            table-type="jobs">
+         Adds nodes to represent available jobs on the server
+      </node>
+      <node
+            class="net.sourceforge.sqlexplorer.mssql.nodes.SystemProcedureFolder"
+            database-product-name="Microsoft SQL Server*"
+            icon="icons/stored_procedure.gif"
+            id="net.sourceforge.sqlexplorer.mssql.systemprocedures"
+            name="System Procdure Folder"
+            parent-node="schema+catalog"
+            table-type="system_procedure_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.mssql.nodes.TriggerFolder"
+            database-product-name="Microsoft SQL Server*"
+            icon="icons/stored_procedure.gif"
+            id="net.sourceforge.sqlexplorer.mssql.TriggerFolder"
+            name="Trigger Folder"
+            parent-node="schema+catalog"
+            table-type="trigger_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.mssql.nodes.FunctionFolder"
+            database-product-name="Microsoft SQL Server*"
+            icon="icons/stored_procedure.gif"
+            id="net.sourceforge.sqlexplorer.mssql.FunctionFolder"
+            name="FunctionFolder"
+            parent-node="schema+catalog"
+            table-type="function_folder"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.JobsTab"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.JobsTab"
+            name="Jobs Info"
+            node-type="jobs">
+         Displays details about a selected job
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.JobTab"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.JobTab"
+            name="Job Info"
+            node-type="JobsNode"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.JobHistoryTab"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.JobHistoryTab"
+            name="Job History"
+            node-type="JobsNode">
+         Displays the current history for this job
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.MonitorTab"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.MonitorTab"
+            name="Monitor Tab"
+            node-type="schema, catalog"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.ProcessTab"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.ProcessTab"
+            name="Process Tab"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.JobStepHistory"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.JobStepHistory"
+            name="Job Step History"
+            node-type="JobNodeStep"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mssql.tabs.JobSchedule"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.JobSchedule"
+            name="Job Schedule"
+            node-type="JobsNode"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.EditProcedure"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.EditProcedure"
+            name="Edit Procedure"
+            node-type="procedure"/>
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.EditFunction"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.EditFunction"
+            name="Edit Function"
+            node-type="function"/>
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.EditTrigger"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.EditTrigger"
+            name="Edit Trigger"
+            node-type="trigger"/>
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.StartJob"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.StartJob"
+            name="Start Job"
+            node-type="job"/>
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.StopJob"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.StopJob"
+            name="Stop Job"
+            node-type="job"/>
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.ViewStep"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.ViewStep"
+            name="View Step"
+            node-type="JobNodeStep"/>
+      <action
+            class="net.sourceforge.sqlexplorer.mssql.actions.StartJobOnStep"
+            database-product-name="Microsoft SQL Server*"
+            id="net.sourceforge.sqlexplorer.mssql.StartJobOnStep"
+            name="Start Job on Step"
+            node-type="JobNodeStep"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.databaseProduct">
+      <databaseProduct
+            class="net.sourceforge.sqlexplorer.mssql.dbproduct.MsSqlDatabaseProduct"
+            database-product-name="Microsoft SQL Server*">
+      </databaseProduct>
+   </extension>
+
+</fragment>

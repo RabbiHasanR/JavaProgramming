@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.derby.actions.CheckTableContextAction"
+            database-product-name="apache derby"
+            id="net.sourceforge.sqlexplorer.derby.actions.CheckTableContextNodeAction"
+            name="net.sourceforge.sqlexplorer.derby.actions.CheckTableContextNodeAction"
+            node-type="table">
+      </action>
+      <action
+            class="net.sourceforge.sqlexplorer.derby.actions.CreateSchemaContextAction"
+            database-product-name="apache derby"
+            id="net.sourceforge.sqlexplorer.derby.CreateSchemaContextAction"
+            name="net.sourceforge.sqlexplorer.derby.CreateSchemaContextAction"
+            node-type="database">
+      </action>
+      <action
+            class="net.sourceforge.sqlexplorer.derby.actions.DropSchemaContextAction"
+            database-product-name="apache derby"
+            id="net.sourceforge.sqlexplorer.derby.DropSchemaContextAction"
+            name="sqlexplorer_derby.action3"
+            node-type="schema">
+      </action>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.derby.nodes.SchemaTriggerFolder"
+            database-product-name="apache derby"
+            id="net.sourceforge.sqlexplorer.derby.SchemaTriggerFolderNode"
+            name="Schema Triggers"
+            parent-node="schema"
+            table-type="SCHEMA">
+      </node>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.derby.tabs.TriggerTab"
+            database-product-name="apache derby"
+            id="net.sourceforge.sqlexplorer.derby.TriggerTabTabs"
+            name="sqlexplorer_derby.detailtab1"
+            node-type="trigger">
+      </detailtab>
+   </extension>
+
+</fragment>

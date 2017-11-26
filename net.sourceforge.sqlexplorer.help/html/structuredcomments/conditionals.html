@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+
+  
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+
+  
+
+
+  
+  <title>Structured Comments</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+
+
+  
+  <style>
+.macro {
+font: bold 12pt Courier;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<h1>Conditional Compilation </h1>
+
+
+<p>Conditional Compilation uses <a href="macros.html">Macros</a> to decide whether to include or exclude blocks of code from being executed; a typical usage of this is to enable/disable debug code.</p>
+
+
+<p><br>
+
+  <span class="macro">${ifdef [!]macro-name} [data]</span><br>
+
+  <br>
+
+Conditionally executes code if <span class="code">macro-name</span> is defined; if the exclamation mark is included before the <span class="code">macro-name</span> then the code will only be executed if the <span class="code">macro-name</span> is <span style="font-style: italic;">not</span> defined. &nbsp;If <span class="code">data</span> is given, then the <span class="code">ifdef</span> command is an inline command, otherwise it becomes a grouped command and must be paired with a corresponding <span class="code">endif</span>.<br>
+
+<br>
+</p>
+
+
+<div style="margin-left: 40px;"><span class="code">--${ifdef DEBUG} this is an inline ifdef</span><br class="code">
+
+<span class="code">--$(ifdef&nbsp;DEBUG}</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; this is a grouped ifdef</span><br class="code">
+
+<span class="code">--${endif}</span><br>
+
+</div>
+
+<br>
+
+In this example, if the macro DEBUG is defined then the code output by SQL Explorer will be:<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">this is an inline ifdef<br>
+this is a grouped ifdef<br>
+</span>
+</div>
+
+<br>
+
+<br>
+
+<span class="macro">${else} [data]</span><br>
+
+<br>
+
+Counterpart to a grouped <span class="code">ifdef</span> command; if <span class="code">data</span>
+is provided then it is an inline command, otherwise it is a grouped
+command that must be paired with a corresponding <span class="code">endif</span>. &nbsp;For
+example:<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">--$(ifdef&nbsp;DEBUG}</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; in debug mode<br>
+
+--${else}<br>
+
+&nbsp;&nbsp;&nbsp; not in debug mode<br class="code">
+
+</span><span class="code">--${endif}</span><br>
+
+</div>
+
+<br>
+
+<br>
+
+<span class="macro">${endif}</span><br>
+
+<br>
+Closes a grouped <span class="code">ifdef</span>.<br>
+</body>
+</html>

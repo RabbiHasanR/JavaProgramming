@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 source folders to &apos;Resources&apos;&#x0D;&#x0A;- Original project: &apos;PointOfSale System&apos;&#x0D;&#x0A;- Destination element: &apos;Resources&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     PointOfSale System/src/Path/sqljdbc4.jar&#x0D;&#x0A;     PointOfSale System/Resource/rs2xml.jar" description="Copy source folders" element1="/src\/Path\/sqljdbc4.jar" element2="/Resource\/rs2xml.jar" flags="6" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyRoots" roots="2" stamp="1491832811303" target="/PosSystem/Resources" version="1.0"/>
+</session>

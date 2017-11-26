@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.ProcessTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.processTab"
+            name="Process List"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.StatusTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.statusTab"
+            name="Database Status"
+            node-type="database"/>    
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.VariablesTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.variablesTab"
+            name="Variables"
+            node-type="database"/>             
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.LogsTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.logsTab"
+            name="Logs"
+            node-type="database"/>   
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.TableStatusTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.tableStatusTab"
+            name="Table Status"
+            node-type="catalog"/>              
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.OpenTablesTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.openTablesTab"
+            name="Open Tables"
+            node-type="catalog"/>                                          
+      <detailtab
+            class="net.sourceforge.sqlexplorer.mysql.tabs.DDLTab"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.tabs.DDLTab"
+            name="Generic Source Tab"
+            node-type="catalog,table,view,function,procedure,trigger"/>    
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.mysql.actions.CreateTableScriptAction"
+            database-product-name="MySQL*"
+            icon="icons/create_table.gif"
+            id="net.sourceforge.sqlexplorer.mysql.createTableScript"
+            name="Create Table Script"
+            node-type="table"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.node">
+      <!-- hide node local temporary tables -->  
+      <node
+            class="net.sourceforge.sqlexplorer.mysql.nodes.DummyNode"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.nodes.DummyNode"
+            name="Hidden"
+            parent-node="schema+catalog"
+            table-type="local temporary"/>
+            
+      <node
+            class="net.sourceforge.sqlexplorer.mysql.nodes.ProcedureFolder"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.nodes.ProcedureFolder"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="procedure_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.mysql.nodes.TriggerFolder"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.nodes.TriggerFolder"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="trigger_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.mysql.nodes.FunctionFolder"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.nodes.FunctionFolder"
+            name="Function Folder"
+            parent-node="schema+catalog"
+            table-type="function_folder"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.mysql.actions.RenameTable"
+            database-product-name="MySQL*"
+            id="net.sourceforge.sqlexplorer.mysql.actions.RenameTable"
+            name="Rename Table Context Action"
+            node-type="table"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.databaseProduct">
+      <databaseProduct
+            class="net.sourceforge.sqlexplorer.mysql.dbproduct.MySqlDatabaseProduct"
+            database-product-name="MySQL*">
+      </databaseProduct>
+   </extension>
+
+</fragment>

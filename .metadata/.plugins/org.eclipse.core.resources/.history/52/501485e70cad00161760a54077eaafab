@@ -1,0 +1,10 @@
+package com.daynamicbonding.javabook;
+
+public class DaynamicBonding {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

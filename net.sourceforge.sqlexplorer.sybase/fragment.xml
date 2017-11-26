@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.sybase.tabs.ProcessTab"
+            database-product-name="Adaptive Server*"
+            id="net.sourceforge.sqlexplorer.sybase.tabs.ProcessTab"
+            name="Process List"
+            node-type="database"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.sybase.tabs.ProcessTabRunning"
+            database-product-name="Adaptive Server*"
+            id="net.sourceforge.sqlexplorer.sybase.tabs.ProcessTabRunning"
+            name="Running Process List "
+            node-type="database"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.sybase.nodes.ProcedureFolder"
+            database-product-name="Adaptive Server*"
+            id="net.sourceforge.sqlexplorer.sybase.nodes.ProcedureFolder"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="procedure_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.sybase.nodes.UserFolder"
+            database-product-name="Adaptive Server*"
+            id="net.sourceforge.sqlexplorer.sybase.nodes.UserFolder"
+            name="User Folder"
+            parent-node="schema+catalog"
+            table-type="user_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.sybase.nodes.UDDataTypeFolder"
+            database-product-name="Adaptive Server*"
+            id="net.sourceforge.sqlexplorer.sybase.nodes.UDDataTypeFolder"
+            name="User Defined DataType Folder"
+            parent-node="schema+catalog"
+            table-type="uddt_folder"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.sybase.actions.ShowProcedureSource"
+            database-product-name="Adaptive Server*"
+            icon="icons/new_editor.gif"
+            id="net.sourceforge.sqlexplorer.sybase.actions.ShowProcedureSource"
+            name="Show Procedure Source Action"
+            node-type="procedure"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.databaseProduct">
+      <databaseProduct
+            class="net.sourceforge.sqlexplorer.sybase.dbproduct.SybaseDatabaseProduct"
+            database-product-name="Adaptive Server*">
+      </databaseProduct>
+   </extension>
+
+</fragment>

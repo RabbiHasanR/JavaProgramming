@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+
+  
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+
+  
+
+
+  
+  <title>Structured Comments</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+
+
+  
+  <style>
+.macro {
+font: bold 12pt Courier;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<h1>Macro Subsitution</h1>
+<p>The simplest use of Structured Comments is macro substitution - and if you've ever been a C/C++ developer the concept will be very familiar. You can define and un-define macros using the <span class="code">define</span> and <span class="code">undef</span> commands, and later on in your code use the <span class="code">ref</span> command to insert the value, optionally replacing &quot;normal&quot; code.</p>
+<p>Macros can also be used in <a href="conditionals.html">Conditional Compilation</a> to enable or disable sections of code, for example to enable debugging information on your test platform. </p>
+<span class="macro">${define macro-name} [value]</span><br>
+
+
+<br>
+
+
+Defines a macro called "macro-name" and assigns it the value "value";
+"value" is optional and if not present an empty string is assigned.<br>
+
+<br>
+
+For example:<br>
+
+<br>
+
+<span class="code">&nbsp;&nbsp;&nbsp; --+${define DEBUG} true</span><br>
+
+<br>
+
+defines a macro called DEBUG and sets its value to" true".<br>
+
+<br>
+
+<br>
+
+<span class="macro">${undef macro-name}</span><br>
+
+<br>
+
+Removes a macro definition and discards the value.<br>
+
+<br>
+
+For example:<br>
+
+<br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; --+${undef DEBUG}</span><br>
+<br>
+<br>
+
+<br>
+
+
+<span class="macro">${ref macro-name} [data]</span><br>
+
+<br>
+This comment is replaced with the value of the macro identified by <span class="code">macro-name</span>; if the macro does not exist then the optional <span class="code">data</span> is used instead. &nbsp;If followed by an <span class="code">endref</span> and <span class="code">data</span> is not provided then the value between the <span class="code">ref</span> and <span class="code">endref</span> is used if the macro <span class="code">macro-name</span> is not defined. &nbsp;For example:<br>
+<br>
+<div class="code" style="margin-left: 40px;">--${define mymacro} hello world<br>
+--${ref mymacro} test<br>
+--${ref anothermacro} my default value<br>
+--${ref somethingelse}<br>
+this is<br>
+a longer<br>
+alternative<br>
+--${endref}<br>
+</div>
+<br>
+will produce:<br>
+<br>
+<div class="code" style="margin-left: 40px;">hello world<br>
+my default value<br>
+this is<br>
+a longer<br>
+alternative<br>
+</div>
+<br>
+
+<br>
+
+<span class="macro">${endref}</span><br>
+
+<br>
+
+Completes a grouped <span class="code">ref </span>command.<br>
+
+<br>
+</body>
+</html>

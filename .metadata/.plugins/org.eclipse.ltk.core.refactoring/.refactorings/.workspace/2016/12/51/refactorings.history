@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 11 resources" deleteContents="false" description="Delete 11 resources" element1="/net.sourceforge.sqlexplorer" element10="/net.sourceforge.sqlexplorer.postgresql" element11="/net.sourceforge.sqlexplorer.sybase" element2="/net.sourceforge.sqlexplorer.db2" element3="/net.sourceforge.sqlexplorer.dbase" element4="/net.sourceforge.sqlexplorer.derby" element5="/net.sourceforge.sqlexplorer.help" element6="/net.sourceforge.sqlexplorer.informix" element7="/net.sourceforge.sqlexplorer.mssql" element8="/net.sourceforge.sqlexplorer.mysql" element9="/net.sourceforge.sqlexplorer.oracle" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="11" stamp="1481472272799"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;rs2xml.jar&apos; to &apos;PointOfSale System/Resource&apos;&#x0D;&#x0A;- Original project: &apos;Gui Re-Practise&apos;&#x0D;&#x0A;- Destination element: &apos;PointOfSale System/Resource&apos;&#x0D;&#x0A;- Original element: &apos;rs2xml.jar&apos;" description="Copy file" destination="=PointOfSale System/Resource" element1="Resource/rs2xml.jar" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1490986710845" units="0" version="1.0"/>
+</session>

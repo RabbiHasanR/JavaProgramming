@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.dbase.nodes.ProcedureFolder"
+            database-product-name="DBase*"
+            icon="icons/procedure.gif"
+            id="net.sourceforge.sqlexplorer.dbase.nodes.ProcedureFolder"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="procedure_folder"/>
+   </extension>
+
+</fragment>

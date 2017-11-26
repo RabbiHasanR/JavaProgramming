@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="PluginImportWizard">
+		<item value="1" key="importType"/>
+		<item value="true" key="scanAll"/>
+		<item value="true" key="addFragments"/>
+		<item value="C:\Users\Rabbi hasan\Downloads\plugins" key="droplocation0"/>
+		<item value="3" key="importFrom"/>
+		<item value="true" key="showLatestPluginsOnly"/>
+	</section>
+	<section name="FeatureImportWizard">
+	</section>
+	<section name="targetStateView">
+	</section>
+</section>

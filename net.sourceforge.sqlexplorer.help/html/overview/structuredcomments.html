@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+
+  
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+
+  
+
+
+  
+  <title>Structured Comments</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+
+
+  
+  <style>
+.macro {
+font: bold 12pt Courier;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<h1>Structured Comments</h1>
+
+
+<p>Structured Comments are an extension to your SQL programming
+which is
+unique to SQL Explorer. &nbsp;By adding specially formatted
+comments to your code you can instruct SQL Explorer to perform
+additional tasks, such as conditional compilation and macro expansion.<br>
+
+
+</p>
+
+
+<p>The design of Structured Comments is such that using these
+extensions,
+while specific to SQL Explorer, will not make your code incompatible
+with other tools (including those that came out-of-the-box with your
+database product). &nbsp;This is because the commands are embeded
+inside specially formatted comments which (because they are comments)
+will be ignored by other products. &nbsp;The commands allow you to
+define defaults and alternatives so that when your script is executed
+by another tool they can have a sensible default behaviour, and it's
+only when SQL Explorer runs them that they have special meaning.</p>
+
+
+<h2>Structured Comment Syntax</h2>
+
+
+A Structured Comment consists of&nbsp;"${" <span style="font-style: italic;">at the very start</span>
+of a comment - no spaces should appear between the comment start and
+the "${". &nbsp;For example:<br>
+
+
+<br>
+
+
+<div style="margin-left: 40px;">
+<table style="text-align: left; width: 558px; height: 52px;" border="0" cellpadding="0" cellspacing="0">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td class="code" width="50%">/*${define
+mymacro} &nbsp;12345*/</td>
+
+
+      <td>Correct</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td class="code">/* &nbsp;${define mymacro} */</td>
+
+
+      <td>Incorrect</td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+</div>
+
+
+<br>
+
+
+Once SQL Explorer has identified a comment as a Structured Comment, it
+then looks for a command and parameters in the following form:<br>
+
+
+<br>
+
+
+<div style="margin-left: 40px;"><span class="code" style="font-weight: bold;">${ </span><span class="code">command [parameter [parameter [...]] </span><span class="code" style="font-weight: bold;">}</span><span class="code"> [data]</span></div>
+
+
+<br>
+
+
+I.E., the "${" at the start of the comment, followed by a
+command,&nbsp;zero or more parameters, and then a "}"; after this
+can optionally come some arbitrary data - we'll see how this can be
+used later.<br>
+
+
+<br>
+
+
+In the example above, the command is "define", it is given a parameter
+of "mymacro", and has "12345" as the data; &nbsp;it's not hard to
+guess that this Structured Comment defines a macro named "mymacro" and
+sets it's value to "12345"!<br>
+
+
+<br>
+
+<h2>Inline vs. Grouped Commands</h2>
+
+Most Structured Comment commands are inline, which is to say that they
+exist in a single comment; however, some commands span several
+comments, similar to begin...end constructs in programming languages
+(called a Grouped command). &nbsp;Typically, whether a command is
+inline or grouped depends on how you use it; for example, the <span class="code">ifdef</span> command is an inline command if you provide non-whitespace after the "}" but grouped if not. &nbsp;For example:<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">--${ifdef DEBUG} this is an inline ifdef</span><br class="code">
+
+<span class="code">--$(ifdef !DEBUG}</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; this is a grouped ifdef</span><br class="code">
+
+<span class="code">--${endif}</span><br>
+
+</div>
+
+<br>
+
+<h2>Commands</h2>
+
+
+<span class="macro">${define macro-name} [value]</span><br>
+
+
+<br>
+
+
+Defines a macro called "macro-name" and assigns it the value "value";
+"value" is optional and if not present an empty string is assigned.<br>
+
+<br>
+
+For example:<br>
+
+<br>
+
+<span class="code">&nbsp;&nbsp;&nbsp; --+${define DEBUG} true</span><br>
+
+<br>
+
+defines a macro called DEBUG and sets its value to" true".<br>
+
+<br>
+
+<br>
+
+<span class="macro">${undef macro-name}</span><br>
+
+<br>
+
+Removes a macro definition and discards the value.<br>
+
+<br>
+
+For example:<br>
+
+<br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; --+${undef DEBUG}</span><br>
+
+<br>
+
+<br>
+
+<span class="macro">${ifdef [!]macro-name} [data]</span><br>
+
+<br>
+
+Conditionally executes code if <span class="code">macro-name</span> is defined; if the exclamation mark is included before the <span class="code">macro-name</span> then the code will only be executed if the <span class="code">macro-name</span> is <span style="font-style: italic;">not</span> defined. &nbsp;If <span class="code">data</span> is given, then the <span class="code">ifdef</span> command is an inline command, otherwise it becomes a grouped command and must be paired with a corresponding <span class="code">endif</span>.<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">--${ifdef DEBUG} this is an inline ifdef</span><br class="code">
+
+<span class="code">--$(ifdef&nbsp;DEBUG}</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; this is a grouped ifdef</span><br class="code">
+
+<span class="code">--${endif}</span><br>
+
+</div>
+
+<br>
+
+In this example, if the macro DEBUG is defined then the code output by SQL Explorer will be:<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">this is an inline ifdef<br>
+this is a grouped ifdef<br>
+</span>
+</div>
+
+<br>
+
+<br>
+
+<span class="macro">${else} [data]</span><br>
+
+<br>
+
+Counterpart to a grouped <span class="code">ifdef</span> command; if <span class="code">data</span>
+is provided then it is an inline command, otherwise it is a grouped
+command that must be paired with a corresponding <span class="code">endif</span>. &nbsp;For
+example:<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">--$(ifdef&nbsp;DEBUG}</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; in debug mode<br>
+
+--${else}<br>
+
+&nbsp;&nbsp;&nbsp; not in debug mode<br class="code">
+
+</span><span class="code">--${endif}</span><br>
+
+</div>
+
+<br>
+
+<br>
+
+<span class="macro">${endif}</span><br>
+
+<br>
+Closes a grouped <span class="code">ifdef</span>.<br>
+<br>
+
+<br>
+
+
+<span class="macro">${ref macro-name} [data]</span><br>
+
+<br>
+This comment is replaced with the value of the macro identified by <span class="code">macro-name</span>; if the macro does not exist then the optional <span class="code">data</span> is used instead. &nbsp;If followed by an <span class="code">endref</span> and <span class="code">data</span> is not provided then the value between the <span class="code">ref</span> and <span class="code">endref</span> is used if the macro <span class="code">macro-name</span> is not defined. &nbsp;For example:<br>
+<br>
+<div class="code" style="margin-left: 40px;">--${define mymacro} hello world<br>
+--${ref mymacro} test<br>
+--${ref anothermacro} my default value<br>
+--${ref somethingelse}<br>
+this is<br>
+a longer<br>
+alternative<br>
+--${endref}<br>
+</div>
+<br>
+will produce:<br>
+<br>
+<div class="code" style="margin-left: 40px;">hello world<br>
+my default value<br>
+this is<br>
+a longer<br>
+alternative<br>
+</div>
+<br>
+
+<br>
+
+<span class="macro">${endref}</span><br>
+
+<br>
+
+Completes a grouped <span class="code">ref </span>command.<br>
+
+<br>
+
+<br>
+
+<br>
+
+<h2>Tips &amp; Tricks</h2>
+The principal purpose of the conditional compilation features in
+Structured Comments is to enable debug-mode code which is invisible if
+a standard deployment tool is used.<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">--${define DEBUG} true</span><br class="code">
+<span class="code">--${ifdef DEBUG} log('some state info');</span><br>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+</body>
+</html>

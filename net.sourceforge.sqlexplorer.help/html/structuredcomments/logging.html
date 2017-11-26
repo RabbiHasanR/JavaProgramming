@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+  <title>Structured Comments</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+  <style>
+.macro {
+font: bold 12pt Courier;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<h1>Logging</h1>
+
+
+<p>Logging parameters can be set in the SQL Explorer preferences page or using the following syntax:</p>
+
+<span class="macro">${set option-name} On|Off</span><br>
+
+<p>Possible option-name's are: 
+<ul>
+<li>LOG_SQL: <br>sets logging for SQL-History on or off.</li>
+<li>LOG_SUCCESS: <br>sets logging for affected rows and execution time in the Messages-View on or off.</li>
+</ul>
+Examples:</p>  
+<p class="code">
+ -- ${set LOG_SQL} Off<br>
+ -- ${set LOG_SUCCESS} On<br>
+</p>
+<p>Structured comments are processed before executing any SQL. 
+Therefore these settings apply to the whole executing block (file or marked text).
+</p>
+<p>
+'${set' structured comments do not change the values set in the preference page. They allow to switch 
+them temporarily in SQL files.   
+</p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <title>SQL Editor</title>
+
+
+</head>
+
+
+<body>
+
+<h1>SQL Editor</h1>
+
+<p>The SQL Editor provides the following features:</p>
+
+<ul>
+
+  <li>Executing queries using CTRL-ENTER</li>
+
+  <li>Basic syntax coloring</li>
+
+  <li>Basic Content Assist</li>
+
+  <li>Overriding result limit</li>
+
+  <li>Word wrapping (if enabled in preferences)</li>
+
+  <li>Session/Catalog/Schema switching</li>
+
+  <li>Loading/Saving SQL scripts</li>
+
+  <li>Commit/Rollback buttons (if session is not in autocommit
+mode)</li>
+
+  <li>Display of query execution time of last run query</li>
+
+</ul>
+
+<img src="editor1.jpg" alt="">
+<p>The SQL Editor is divided into two halves - the top half
+contains your SQL quer(ies) while the bottom half (the results half)
+shows the results of executing them against your database.</p>
+
+<p>The results half &nbsp;contains a tab for the results of
+each query
+executed (by default any existing&nbsp; tabs are removed each time
+you execute the query but you can change this in Preferences), with a
+further tab for messages returned by the server.&nbsp;</p>
+
+<p>The columns are sortable by clicking on the column header.</p>
+
+<img src="editor3.jpg" alt="editor3.jpg">
+<p>Different export options are available to export the query
+results.</p>
+
+<img alt="" src="file:///C:/rcp/workspace/sqlexplorer/sqlexplorer_help/nl/en/html/overview/editor4.jpg" border="0">
+<p><br>
+
+Where a query returns messages from the server (for example, Stored
+Procedures) the messages tab is used to provide more information:</p>
+
+<img src="editor2.jpg" alt="editor2.jpg">
+<p>In the screenshot above, the message tab shows the typical
+results of executing a stored procedure against a database (in this
+case Oracle) where the procedure has errors. &nbsp;In this
+particular query there are no result sets so there is only the Messages
+tab, in which it lists each message with a status, text position, a
+snippet of the SQL that was executed (where appropriate) and the text
+of the error message. &nbsp;Clicking on a line in the Messages tab
+takes you to the line of text in the query which caused the error.</p>
+
+<p><span style="font-style: italic;">NOTE: </span>in
+this example you can see some new features in SQLExplorer v3.5.0 - the
+two comments at the top of the query which begin "${define" are
+Structured Comments, which are special comments which introduce
+additional commands to SQLExplorer without introducing proprietary
+extensions into your SQL scripts. &nbsp;The Structured Comments
+feature introduces conditional compilation and macros, while upcoming
+features include prompting for values, locale independance, overriding
+content types, and scripted import and export).</p>
+
+<p></p>
+
+<p></p>
+
+</body>
+</html>

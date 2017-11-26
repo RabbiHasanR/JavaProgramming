@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Developers" link_to="toc.xml#developers" topic="tocdevelopers.html">
+	<topic label="Extending SQL Explorer" href="html/developers/index.html">
+		<topic label="Create a Fragment" href="html/developers/createfragment.html" />
+		<topic label="Structure Nodes" href="html/developers/structurenodes.html" />
+		<topic label="Structure Actions" href="html/developers/structureactions.html" />
+		<topic label="Editor Actions" href="html/developers/editoractions.html" />
+		<topic label="Result Actions" href="html/developers/resultactions.html" />
+	</topic>
+	<topic label="Help Wanted"  href="html/developers/helpwanted.html" />
+</toc>

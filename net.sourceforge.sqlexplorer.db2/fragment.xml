@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         id="net.sourceforge.sqlexplorer.db2.EditorActions"
+         point="net.sourceforge.sqlexplorer.editorAction">
+      <action
+            class="net.sourceforge.sqlexplorer.db2.actions.ExplainAction"
+            database-product-name="DB2*"
+            icon="icons/explain.gif"
+            id="net.sourceforge.sqlexplorer.db2.actions.explainplan"
+            name="net.sourceforge.sqlexplorer.db2.explainaction"/>
+   </extension>
+   <extension
+         id="net.sourceforge.sqlexplorer.db2.Nodes"
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.db2.nodes.TriggerFolder"
+            database-product-name="DB2*"
+            icon="icons/trigger.gif"
+            id="net.sourceforge.sqlexplorer.db2.nodes.TriggerFolder"
+            name="Trigger Folder"
+            parent-node="schema+catalog"
+            table-type="trigger_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.db2.nodes.TableTriggerFolder"
+            database-product-name="DB2*"
+            icon="icons/trigger.gif"
+            id="net.sourceforge.sqlexplorer.db2.nodes.TableTriggerFolder"
+            name="Table Specific Trigger Folder"
+            parent-node="table"
+            table-type="trigger_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.db2.nodes.ProcedureFolder"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.nodes.ProcedureFolder"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="procedure_folder"/>
+      <node
+            class="net.sourceforge.sqlexplorer.db2.nodes.SequenceFolder"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.nodes.SequenceFolder"
+            name="Sequence Folder"
+            parent-node="schema+catalog"
+            table-type="sequence_folder"/>            
+      <node
+            class="net.sourceforge.sqlexplorer.db2.nodes.FunctionFolder"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.nodes.FunctionFolder"
+            name="Function Folder"
+            parent-node="schema+catalog"
+            table-type="function_folder"/>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.TriggerSourceTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.TriggerSourceTab"
+            name="Trigger Source"
+            node-type="trigger"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.ProcedureSourceTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.ProcedureSourceTab"
+            name="Procedure Source"
+            node-type="procedure"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.SequenceInfoTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.SequenceInfoTab"
+            name="Sequence Info"
+            node-type="sequence"/>            
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.ViewSourceTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.ViewSourceTab"
+            name="View Source"
+            node-type="view"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.FunctionSourceTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.FunctionSourceTab"
+            name="Function Source"
+            node-type="function"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.ProcedurePrivilegeTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.ProcedurePrivilegeTab"
+            name="Procedure Privilege"
+            node-type="procedure"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.FunctionPrivilegeTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.FunctionPrivilegeTab"
+            name="Function Privilege"
+            node-type="function"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.ProcedureDependencyTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.ProcedureDependencyTab"
+            name="Procedure Dependency"
+            node-type="procedure"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.FunctionDependencyTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.FunctionDependencyTab"
+            name="Function Dependency"
+            node-type="function"/>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.db2.tabs.TableDependencyTab"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.tabs.TableDependencyTab"
+            name="Table Dependency"
+            node-type="table"/>    
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeContextAction">
+      <action
+            class="net.sourceforge.sqlexplorer.db2.actions.ReactiveViewAction"
+            database-product-name="DB2*"
+            id="net.sourceforge.sqlexplorer.db2.actions.ReactiveViewAction"
+            name="Reactive View Context Action"
+            node-type="Inoperative View"/>
+   </extension>
+</fragment>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Structured Comments" link_to="toc.xml#structuredcomments">
+	<topic label="Introduction" href="html/structuredcomments/introduction.html" />
+	<topic label="Macro substitution" href="html/structuredcomments/macros.html" />
+	<topic label="Conditional Compilation" href="html/structuredcomments/conditionals.html" />
+	<topic label="Parameters and Stored Procedures" href="html/structuredcomments/parameters.html" />
+	<topic label="Logging" href="html/structuredcomments/logging.html" />
+</toc>

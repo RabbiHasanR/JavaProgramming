@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Microsoft SQL Server extensions to SQL Explorer
+Bundle-SymbolicName: net.sourceforge.sqlexplorer.mssql;singleton:=true
+Bundle-Version: 3.6.1.v20120708_SR6
+Bundle-ClassPath: net.sourceforge.sqlexplorer.mssql_3.6.1.v20120708_SR6.jar
+Bundle-Vendor: Austin Morgan
+Fragment-Host: net.sourceforge.sqlexplorer;bundle-version="3.5.0"
+Export-Package: net.sourceforge.sqlexplorer.mssql,
+ net.sourceforge.sqlexplorer.mssql.actions,
+ net.sourceforge.sqlexplorer.mssql.nodes,
+ net.sourceforge.sqlexplorer.mssql.tabs
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

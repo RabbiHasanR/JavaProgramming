@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+   <extension
+         point="net.sourceforge.sqlexplorer.nodeDetailTab">
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.ProcessTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.processTab"
+            name="Process List"
+            node-type="database">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.ProcedureTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.ProcedureTab"
+            name="Procedure Information"
+            node-type="procedure,package_procedure">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.FunctionTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.FunctionTab"
+            name="Function Information"
+            node-type="function,function_procedure">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.SpaceTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.SpaceTab"
+            name="Space Information"
+            node-type="SpaceNode">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.ChunkTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.ChunkTab"
+            name="Chunk Information"
+            node-type="ChunkNode">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.SessionTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.SessionTab"
+            name="Session Information"
+            node-type="SessionNode">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.SpaceFolderTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.SpaceFolderTab"
+            name="Spaces Folder Information"
+            node-type="spaces_folder">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.ChunksFolderTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.ChunksFolderTab"
+            name="Chunks Folder Information"
+            node-type="chunks_folder">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.LogsFolderTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.LogsFolderTab"
+            name="Logs Folder Information"
+            node-type="logs_folder">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.OnlineLogTab"
+            database-product-name="informix*"
+            id="net.sourceforge.sqlexplorer.informix.onlineLogTab"
+            name="Online Log"
+            node-type="database">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.ConfigTab"
+            database-product-name="informix*"
+            id="net.sourceforge.sqlexplorer.informix.configTab"
+            name="Configuration"
+            node-type="database">
+      </detailtab>
+      <detailtab
+            class="net.sourceforge.sqlexplorer.informix.tabs.DBDetailTab"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.dbDetailTab"
+            name="Database Information"
+            node-type="catalog">
+      </detailtab>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.node">
+      <node
+            class="net.sourceforge.sqlexplorer.informix.nodes.ProcedureFolder"
+            database-product-name="Informix*"
+            icon="icons/proc.gif"
+            id="net.sourceforge.sqlexplorer.informix.nodes.ProcedureFolder"
+            name="Procedure Folder"
+            parent-node="schema+catalog"
+            table-type="procedure_folder">
+      </node>
+      <node
+            class="net.sourceforge.sqlexplorer.informix.nodes.FunctionFolder"
+            database-product-name="Informix*"
+            id="net.sourceforge.sqlexplorer.informix.nodes.FunctionFolder"
+            name="Function Folder"
+            parent-node="schema+catalog"
+            table-type="function_folder">
+      </node>
+      <node
+            class="net.sourceforge.sqlexplorer.informix.nodes.StorageFolderNode"
+            database-product-name="Informix*"
+            icon="icons/storage.gif"
+            id="net.sourceforge.sqlexplorer.informix.nodes.StorageFolder"
+            name="Storage Folder"
+            parent-node="root"
+            table-type="storage_folder">
+      </node>
+      <node
+            class="net.sourceforge.sqlexplorer.informix.nodes.SessionFolder"
+            database-product-name="Informix*"
+            icon="icons/sessions.gif"
+            id="net.sourceforge.sqlexplorer.informix.nodes.SessionFolder"
+            name="Session Folder"
+            parent-node="root"
+            table-type="session_folder">
+      </node>
+   </extension>
+   <extension
+         point="net.sourceforge.sqlexplorer.editorAction">
+      <action
+            class="net.sourceforge.sqlexplorer.informix.actions.ExplainSQL"
+            database-product-name="Informix*"
+            icon="icons/explain.gif"
+            id="net.sourceforge.sqlexplorer.informix.actions.explainplan"
+            name="Query Plan">
+      </action>
+   </extension>
+
+</fragment>

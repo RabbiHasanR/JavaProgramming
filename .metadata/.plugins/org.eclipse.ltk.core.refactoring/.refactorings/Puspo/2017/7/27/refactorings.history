@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.qus.solve5.Buissnessman&apos; to &apos;Businessman&apos;&#x0D;&#x0A;- Original project: &apos;Puspo&apos;&#x0D;&#x0A;- Original element: &apos;com.qus.solve5.Buissnessman&apos;&#x0D;&#x0A;- Renamed element: &apos;com.qus.solve5.Businessman&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Buissnessman&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.qus.solve5{Buissnessman.java[Buissnessman" matchStrategy="1" name="Businessman" qualified="false" references="true" similarDeclarations="false" stamp="1499354444613" textual="false" version="1.0"/>
+</session>

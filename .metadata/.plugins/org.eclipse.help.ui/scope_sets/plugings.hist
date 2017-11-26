@@ -1,0 +1,4 @@
+#Fri Nov 25 18:43:27 BDT 2016
+__DEFAULT__=false
+org.eclipse.help.ui.localSearch.master=true
+expression=plugings

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Overview" link_to="toc.xml#overview">
+	<topic label="Driver Preferences" href="html/overview/driverpreferences.html" />
+	<topic label="Connections View" href="html/overview/connections.html" />
+	<topic label="SQL Editor" href="html/overview/sqleditor.html" />
+	<topic label="SQL History" href="html/overview/sqlhistory.html" />
+	<topic label="Structure View" href="html/overview/structure.html" />
+	<topic label="Detail View" href="html/overview/detail.html" />
+	<topic label="DB2, Oracle, and MySQL Features" href="html/overview/db2oracle.html" />
+	<topic label="Structured Comments" href="html/overview/structuredcomments.html" />
+</toc>

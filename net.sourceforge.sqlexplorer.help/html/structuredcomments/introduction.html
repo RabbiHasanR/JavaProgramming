@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+  <title>Structured Comments</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+  <style>
+.macro {
+font: bold 12pt Courier;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<h1>Structured Comments</h1>
+
+
+<p>Structured Comments are an extension to your SQL programming
+which is
+unique to SQL Explorer. &nbsp;By adding specially formatted
+comments to your code you can communicate special instructions or tasks to SQL Explorer in a repeatable, scriptable manner; for example, you can:</p>
+<ul>
+  <li>Use <a href="macros.html">Macro Substitution</a> to define a constant value once and have it used everywhere in your code</li>
+  <li>Use <a href="conditionals.html">Conditional Compilation</a> to vary the code deployed to the server, EG to enable debugging globally</li>
+  <li>Define input and output <a href="parameters.html">Parameters</a> in calls to stored procedures</li>
+  <li>Set <a href="logging.html">Logging Parameters</a></li>
+  <li>Cause SQLExplorer to prompt the user interactively for values (not yet implemented, see v3.5.0.beta3) </li>
+  <li>Export and import data from local files  (not yet implemented, see v3.5.0.beta3) </li>
+  <li>Perform client-side JavaScript  (not yet implemented, see v4.0.0) </li>
+</ul>
+<p>The design of Structured Comments is such that using these
+extensions,
+while specific to SQL Explorer, will not make your code incompatible
+with other tools (including those that came out-of-the-box with your
+database product). &nbsp;This is because the commands are embeded
+inside specially formatted comments which (because they are comments)
+will be ignored by other products. &nbsp;The commands allow you to
+define defaults and alternatives so that when your script is executed
+by another tool they can have a sensible default behaviour, and it's
+only when SQL Explorer runs them that they have special meaning.</p>
+
+
+<h2>Structured Comment Syntax</h2>
+
+
+A Structured Comment consists of&nbsp;"${" <span style="font-style: italic;">at the very start</span>
+of a comment - no spaces should appear between the comment start and the "${". For single line comments (--) a
+single space is allowed between the "--" and the "${" because some database systems require a space after "--" to
+detect it as a single line comment. 
+For example:<br>
+<br>
+<div style="margin-left: 40px;">
+<table style="text-align: left; width: 558px; height: 52px;" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td class="code" width="50%">/*${define mymacro}&nbsp;12345*/<br>
+      --${define mymacro2}&nbsp;12345<br>
+      --&nbsp;${define mymacro3}&nbsp;12345<br>
+      <br>
+      </td>
+      <td valign="top">Correct</td>
+    </tr>
+    <tr>
+      <td class="code">/* &nbsp;${define mymacro} */<br>
+      --&nbsp;&nbsp;&nbsp;${define mymacro2}&nbsp;12345<br>
+      </td>
+      <td valign="top">Incorrect</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+Once SQL Explorer has identified a comment as a Structured Comment, it
+then looks for a command and parameters in the following form:<br>
+<br>
+<div style="margin-left: 40px;">
+ <span class="code" style="font-weight: bold;">${ </span><span class="code">command [parameter [parameter [...]] </span><span class="code" style="font-weight: bold;">}</span><span class="code"> [data]</span>
+</div>
+<br>
+I.E., the "${" at the start of the comment, followed by a
+command,&nbsp;zero or more parameters, and then a "}"; after this
+can optionally come some arbitrary data - we'll see how this can be
+used later.<br>
+<br>
+In the example above, the command is "define", it is given a parameter
+of "mymacro", and has "12345" as the data; &nbsp;it's not hard to
+guess that this Structured Comment defines a macro named "mymacro" and
+sets it's value to "12345"!<br>
+<br>
+
+<h2>Inline vs. Grouped Commands</h2>
+
+Most Structured Comment commands are inline, which is to say that they
+exist in a single comment; however, some commands span several
+comments, similar to begin...end constructs in programming languages
+(called a Grouped command). &nbsp;Typically, whether a command is
+inline or grouped depends on how you use it; for example, the <span class="code">ifdef</span> command is an inline command if you provide non-whitespace after the "}" but grouped if not. &nbsp;For example:<br>
+
+<br>
+
+<div style="margin-left: 40px;"><span class="code">--${ifdef DEBUG} this is an inline ifdef</span><br class="code">
+
+<span class="code">--$(ifdef !DEBUG}</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; this is a grouped ifdef</span><br class="code">
+
+<span class="code">--${endif}</span><br>
+
+</div>
+
+<br>
+
+<h2>&nbsp;</h2>
+
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<drivers>
+  <driver id="-1">
+    <name>JDBC ODBC Bridge</name>
+    <driver-class>sun.jdbc.odbc.JdbcOdbcDriver</driver-class>
+    <url>jdbc:odbc:&lt;alias&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-2">
+    <name>Oracle OCI Driver</name>
+    <url>jdbc:oracle:oci8:@&lt;database_name&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-4">
+    <name>Oracle Thin Driver</name>
+    <url>jdbc:oracle:thin:@&lt;server&gt;:1521:&lt;database_name&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-5">
+    <name>Informix</name>
+    <url>jdbc:informix-sqli://&lt;host&gt;:&lt;port&gt;/&lt;database_name&gt;:INFORMIXSERVER=&lt;server_name&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-6">
+    <name>MySQL Driver</name>
+    <url>jdbc:mysql://&lt;hostname&gt;[&lt;:3306&gt;]/&lt;dbname&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-7">
+    <name>PostgreSQL</name>
+    <driver-class>org.postgresql.Driver</driver-class>
+    <url>jdbc:postgresql:[&lt;//host&gt;[:&lt;5432&gt;/]]&lt;database&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-8">
+    <name>Sybase Adaptive Server Anywhere</name>
+    <url>jdbc:sybase:Tds:&lt;host&gt;:&lt;port&gt;?ServiceName=&lt;DBNAME&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-20">
+    <name>HSQLDB In-Memory</name>
+    <url>jdbc:hsqldb:.</url>
+    <jars/>
+  </driver>
+  <driver id="-9">
+    <name>Sybase Adaptive Server Enterprise</name>
+    <url>jdbc:sybase:Tds:&lt;host&gt;:&lt;port&gt;/&lt;DBNAME&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-21">
+    <name>SAPDB</name>
+    <url>jdbc:sapdb:[//host/]dbname[?property=value[&amp;property=value]*]</url>
+    <jars/>
+  </driver>
+  <driver id="-11">
+    <name>Microsoft MSSQL Server JDBC Driver</name>
+    <url>jdbc:sqlserver://&lt;server_name&gt;:&lt;1433&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-22">
+    <name>Pointbase Server</name>
+    <url>jdbc:pointbase:server://&lt;server_name&gt;/&lt;dbname&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-12">
+    <name>Mimer SQL</name>
+    <url>jdbc:mimer:[//[&lt;user&gt;[:&lt;password&gt;]@]&lt;server&gt;[:&lt;1360&gt;]][/&lt;dbname&gt;][?property=value[&amp;property=value]*]</url>
+    <jars/>
+  </driver>
+  <driver id="-13">
+    <name>CUBRID</name>
+    <url>jdbc:cubrid:&lt;host&gt;:&lt;33000&gt;:&lt;dbname&gt;&gt;:[&lt;user-id&gt;]:[&lt;password&gt;]:[?property=value[&amp;property=value]*]</url>
+    <jars/>
+  </driver>
+  <driver id="-24">
+    <name>IBM DB2 Universal JDBC Driver</name>
+    <url>jdbc:db2://&lt;server&gt;[:port]/&lt;dbname&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-25">
+    <name>JayBird JCA/JDBC Driver for Firebird</name>
+    <url>jdbc:firebirdsql:[//host[:port]/]&lt;database&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-15">
+    <name>Mckoi</name>
+    <url>jdbc:mckoi://&lt;host&gt;[:9157][/&lt;schema&gt;]/</url>
+    <jars/>
+  </driver>
+  <driver id="-16">
+    <name>jTDS</name>
+    <url>jdbc:freetds:sqlserver://&lt;hostname&gt;[:&lt;4100&gt;]/&lt;dbname&gt;[;&lt;property&gt;=&lt;value&gt;[;...]]</url>
+    <jars/>
+  </driver>
+  <driver id="-27">
+    <name>Progress OpenEdge 10.1 JDBC Driver</name>
+    <url>jdbc:datadirect:openedge://hostname:port;databaseName=name</url>
+    <jars/>
+  </driver>
+  <driver id="-17">
+    <name>HSQLDB Web Server</name>
+    <url>jdbc:hsqldb:http://&lt;server&gt;[:&lt;1476&gt;]</url>
+    <jars/>
+  </driver>
+  <driver id="-28">
+    <name>SQLite</name>
+    <url>jdbc:sqlite:&lt;full_db_path&gt;</url>
+    <jars/>
+  </driver>
+  <driver id="-18">
+    <name>HSQLDB Server</name>
+    <url>jdbc:hsqldb:hsql://&lt;server&gt;[:&lt;1476&gt;]</url>
+    <jars/>
+  </driver>
+  <driver id="-29">
+    <name>Apache Derby - Network Server</name>
+    <url>jdbc:derby://&lt;host&gt;:&lt;port&gt;/&lt;dbname&gt;;create=true;</url>
+    <jars/>
+  </driver>
+  <driver id="-19">
+    <name>HSQLDB Standalone</name>
+    <url>jdbc:hsqldb:&lt;databaseName&gt;</url>
+    <jars/>
+  </driver>
+</drivers>

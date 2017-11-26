@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="SQL Explorer" topic="html/toc.html">
+   <topic label="Overview">
+      <anchor id="overview"/>
+   </topic>
+   <topic label="Structured Comments">
+      <anchor id="structuredcomments"/>
+   </topic>
+   <topic label="Developers">
+      <anchor id="developers"/>
+   </topic>
+</toc>

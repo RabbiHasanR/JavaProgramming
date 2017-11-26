@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SQLExplorer Help
+Bundle-SymbolicName: net.sourceforge.sqlexplorer.help;singleton:=true
+Bundle-Version: 3.6.1.v20120708_SR6
+Bundle-ClassPath: net.sourceforge.sqlexplorer.help_3.6.1.v20120708_SR6.jar
+Bundle-Vendor: SQL Explorer Project (eclipsesql.sourceforge.net)
+Require-Bundle: org.eclipse.help

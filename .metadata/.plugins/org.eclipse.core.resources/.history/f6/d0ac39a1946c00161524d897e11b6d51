@@ -1,0 +1,46 @@
+package com.project.mess2;
+import java.sql.*;
+import javax.swing.*;
+
+public class DbConector {
+	Connection conn=null;
+	
+	public static Connection dbConector(){
+		try{
+			Class.forName("org.sqlite.JDBC");
+		     Connection conn=DriverManager.getConnection("jdbc:sqlite:F:\\mess_management\\mess_management.sqlite");
+			JOptionPane.showMessageDialog(null,"Connection is succsesfull");
+			return conn;
+			
+		}
+		catch(Exception e){
+			JOptionPane.showMessageDialog(null,e);
+			return null;
+		}
+	}
+	
+	public void addMemberInformation(String name , String email , String address, String phone , String occuption , String sex) throws SQLException{
+		
+		String query = "Insert into member(member_name,member_email,member_address,member_phone,member_occuption,sex) values(?,?,?,?,?,?) ";
+		PreparedStatement psmt = DbConectordbConector().prepareStatement(query);
+		psmt.setString(1, name);
+		psmt.setString(2,email);
+		psmt.setString(3,address);
+		psmt.setString(4,phone);
+		psmt.setString(5,occuption);
+		psmt.setString(6,sex);
+	    int value = 	psmt.executeUpdate();
+	    if(value==1){
+	    	JOptionPane.showMessageDialog(null,"Data Inserted");
+	    	
+	    }
+	
+		 
+		 
+		
+		
+	
+	}
+	
+
+}

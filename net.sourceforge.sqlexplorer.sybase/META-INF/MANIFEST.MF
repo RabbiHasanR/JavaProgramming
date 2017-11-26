@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sybase Extension to SQLExplorer
+Bundle-SymbolicName: net.sourceforge.sqlexplorer.sybase;singleton:=true
+Bundle-Version: 3.6.1.v20120708_SR6
+Bundle-ClassPath: net.sourceforge.sqlexplorer.sybase_3.6.1.v20120708_SR6.jar
+Bundle-Vendor: SQL Explorer Project (eclipsesql.sourceforge.net)
+Fragment-Host: net.sourceforge.sqlexplorer;bundle-version="3.0.0.20060829"
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
